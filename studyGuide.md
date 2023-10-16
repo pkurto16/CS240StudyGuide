@@ -633,7 +633,7 @@ In C, stack memory issues, particularly involving pointers, can lead to erroneou
 
    - Interaction through input and output (often called "Standard" I/O).
 
-   - Can utilize file as I/O using redirection (e.g., `./a.out &lt; infile > outfile`).
+   - Can utilize file as I/O using redirection (e.g., `./a.out < infile > outfile`).
 
 **2. General I/O and stdio.h:**
 
@@ -721,7 +721,7 @@ In C, stack memory issues, particularly involving pointers, can lead to erroneou
 
 **14. Special File Streams:**
 
-   - `stdin`, `stdout`, and `stderr` can be redirected (e.g., `./a.out &lt; infile`).
+   - `stdin`, `stdout`, and `stderr` can be redirected (e.g., `./a.out < infile`).
 
    
 
