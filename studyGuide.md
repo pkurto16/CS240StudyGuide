@@ -94,49 +94,68 @@
 
 1. **Code Understanding**: Explain the function and process of the initial C code snippet provided, especially focusing on how it uses pointers and character arrays.
 <details>
+
    The initial code snippet demonstrates usage of pointers and character arrays in C. It might involve direct memory allocation for a buffer array (`char buf[2048]`) and possibly using a pointer (`char *p = buf`) to traverse and manipulate the array. This usage involves the pointer directing to specific memory addresses and likely adjusting values stored within the array, exemplifying the direct, unabstracted management and manipulation of memory spaces in C.
 </details>
+
 2. **Memory Management**: What is the significance of '\0' in C strings and how does its absence affect memory usage and function calls?
 <details>
+
 '\0' signifies the end of a string in C, making it crucial for functions that process strings to identify their termination. Without '\0', functions might continue reading adjacent memory, leading to undefined behavior and potential security risks, as it would read or write to unintended memory locations.
 </details>
    
 
 3. **Pointer Arithmetic**: Explain the statement `*p++ = c;` in the context of pointer arithmetic and array traversal.
 <details>
+
 In the statement `*p++ = c;`, `*p` dereferences the pointer, `c` is assigned to the memory location `p` points to, and `++` increments `p` to point to the next memory location. This is typical in array traversal, manipulating and moving through array elements via their memory addresses instead of indexed referencing.
 </details>
+
 4. **Function Detailing**: How does `strstr()` work in C and what kind of parameters and return values does it manage?
 <details>
+
 `strstr()` is a standard library function that finds the first occurrence of a substring in another string. It takes two string pointers as parameters and returns a pointer to the first occurrence of the second string in the first string. If the substring is not found, it returns a null pointer.
 </details>
+
 5. **Java vs C**: Enumerate and explain the key differences between Java and C concerning memory allocation and I/O management.
 
 
 <details>
+
 * Memory Allocation: Java uses garbage collection and safeguards against mismanagement like buffer overflows, while C necessitates manual, meticulous memory management, allowing for (and risking) direct memory access and manipulation.
 * I/O Management: Java uses high-level, object-oriented I/O management, involving stream objects like BufferedReader, while C implements lower-level I/O functions like printf and scanf, providing a more primitive but flexible interaction with I/O resources.
 </details>
+
 6. **Looping in C**: Describe the potential pitfalls and necessary cautions while embedding assignment statements inside expressions within a loop.
 <details>
+
 Embedding assignment statements inside expressions in loops, such as `while((c=getchar()) != EOF)`, can be efficient but risky. Misplacing an `=` (assignment) for `==` (equality check) can introduce logical errors, and if the variable is not used properly, it might cause an infinite loop or abrupt termination.
 </details>
+
 7. **Arrays and Memory**: How does array index incrementation interact with memory allocation and pointer arithmetic in C?
 <details>
+
 Array index incrementation in C simply moves to the next memory block based on the data type size. If you have `int arr[5]`, `arr + 1` points to the next `int` memory block. In relation to pointers, if `int *p = arr;`, then `p++` would also point to the next `int`, demonstrating that pointer arithmetic and array indexing are intertwined in navigating and manipulating memory in C.
 </details>
+
 8. **Preprocessor Directives**: What is the impact and risk of utilizing macros using `#define` in C, especially when interacting with memory and constants?
 <details>
+
 Using `#define` in C creates macros that replace instances in code during pre-processing. Risks involve unintended replacements, difficulty debugging, and potential ambiguity in complex expressions. Moreover, macros do not have type safety, increasing the risk of type mismanagement and subsequent memory issues.
 </details>
+
 9. **Data Types**: Elaborate on the implicit and explicit type conversions between integers and characters in C, emphasizing situations where data loss might occur.
 <details>
+
 Type conversion in C can be implicit or explicit. Implicit conversion (like assigning an `int` to a `float`) might work smoothly, while explicit type casting (like `float` to `int`) could lead to data loss as fractional parts are discarded. Additionally, casting between characters and integers can mismanage ASCII values if not handled with due diligence, leading to unintended symbol representation or data misinterpretation.
 </details>
+
 10. **Error Management**: Discuss potential errors and issues related to stack memory and pointers in C, especially when functions return and pointer addresses might refer to de-allocated or garbage memory.
 <details>
+
 In C, stack memory issues, particularly involving pointers, can lead to erroneous or insecure program behavior. When a function returns, the stack memory utilized is deallocated, potentially leaving pointer addresses directed at garbage values or vulnerable spaces, risking unintended data leaks, misreads, or unauthorized memory access unless managed meticulously.
 </details>
+
 # Summary: Lecture 3 - Basic Data Types in C
 
 #### Code Understanding
@@ -387,46 +406,66 @@ In C, stack memory issues, particularly involving pointers, can lead to erroneou
 
 1. How does C language prioritize between expressiveness and efficiency in data types and their operations?
 <details>
+
    Answer: C prioritizes efficiency.
 </details>
+
    
 
 2. Describe the memory representation and an example operation (like increment) on the specialized data type "pit" provided in the lecture.
 <details>
+
    Answer: Pits are represented using two bits, where "00" denotes 0, "01" denotes 1, and so on. The postfix increment operation wraps around values: 0 ++ = 1, 1 ++ = 2, 2 ++ = 3, 3 ++ = 0.
 </details>
+
 3. How are addresses in memory specified and how does word size impact it?
 <details>
+
    Answer: Addresses specify byte locations in memory, and the word size impacts addressing by defining the byte interval between addressable units (e.g., 4 for 32-bit, 8 for 64-bit).
 </details>
+
 4. What is the significance of type specifiers and qualifiers in C, providing two examples for each?
 <details>
+
    Answer: Type specifiers like "long" and "unsigned" alter the storage size and representation of data types. Qualifiers, like "volatile" and "const", convey additional information about the variable's behavior or usage restrictions.
 </details>
+
 5. How does ASCII code facilitate arithmetic on character data types, providing a specific example?
 <details>
+
    Answer: ASCII assigns numerical values to characters, enabling arithmetic, like 'A'+1 resulting in 'B', due to ASCII values of 'A' and 'B' being 65 and 66, respectively.
 </details>
+
 6. Describe how data types in C can be flexibly used with an example provided in the notes.
 <details>
+
    Answer: In C, data types’ memory allocation, like for an "int", can be used flexibly, such as treating it as an array of 4 characters or an array of 2 16-byte values, despite its original integer type.
 </details>
+
 7. Explain with examples, what are base and composite data types in C?
 <details>
+
    Answer: Base data types like "int" or "char" define basic kinds of data. Composite types, like arrays and structs, are formed using base or other composite types, e.g., an array of ints or a struct containing ints and chars.
 </details>
+
 8. Describe a scenario where understanding data types and their conversions are crucial to prevent bugs in a C program.
-<answer>
+<details>
+
    Answer: Ensuring data consistency across platforms, where data type sizes might vary, and implicit conversions, such as from a larger to a smaller type, may result in data truncation and thus unexpected results.
-</answer>
+</details>
+
 9. What are the sizes and ranges of “signed short int” and “float” types in a 32-bit system?
 <details>
+
    Answer: "signed short int" has a size of 2 bytes and a range of -32768 to +32767. "float" has a size of 4 bytes and a range from 1×10⁻³⁷ to 1×10³⁷.
 </details>
+
 10. How does the declaration of variables work in C, and what are the consequences of not initializing local variables?
 <details>
+
     Answer: Declarations in C allocate storage, and optionally initialize variables (e.g., int lower = 3;). Without explicit initialization, local variables may contain random values, while static and extern variables are zero-initialized.
 </details>
+
 
 # Summary of Lecture 4:
 
@@ -529,44 +568,64 @@ In C, stack memory issues, particularly involving pointers, can lead to erroneou
 **Quiz Questions**
 
 1. How does the comma operator sequence expressions and which value does it return?
+<details>
 
    - **Answer**: It sequences expressions by evaluating them from left to right and returns the value of the last expression.
+</details>
 
 2. In which scenarios is it suggested not to use asserts, according to the lecture?
+<details>
 
    - **Answer**: When the check is either impossible (or too expensive) to validate, or when the check is vacuous or handled elsewhere.
+</details>
 
 3. What is the main difference in memory usage between static and shared libraries?
+<details>
 
    - **Answer**: Static libraries include copies in every process, while shared libraries maintain a single copy in memory.
+</details>
 
 4. What are the primary functionalities of `setjmp` and `longjmp` functions?
+<details>
 
    - **Answer**: `setjmp` saves all registers in `env` and returns 0, while `longjmp` recovers all registers and returns `val`.
+</details>
 
 5. How does the `extern` modifier work with function parameters and why is it used?
+<details>
 
    - **Answer**: It ensures that parameters are interpreted correctly in function declarations and is used when function definitions may be in another file or the same file.
+</details>
 
 6. What will occur if an assert statement, like `assert(non_neg_value > 0);`, fails?
+<details>
 
    - **Answer**: The program will abort if the condition is not true.
+</details>
 
 7. What is the significance of using braces `{` and `}` in creating compound statements in C?
+<details>
 
    - **Answer**: Braces are used to group declarations and statements into a compound statement, and variables declared within the block are only visible in that block.
+</details>
 
 8. How is a static library created from object files and which tool is used?
+<details>
 
    - **Answer**: It is created using the archiver (`ar`) which produces a static library from object files.
+</details>
 
 9. What does the trivia mention about the origin of the name for executables, "a.out", in the context of function calls and compilation?
+<details>
 
    - **Answer**: The name “a.out” originates from “assembler output” despite being an object file.
+</details>
 
 10. Can you provide a concise explanation of the difference between a variable declaration and definition, as per the lecture notes?
+<details>
 
     - **Answer**: A declaration introduces a name and its type to the compiler without allocating storage, whereas a definition allocates storage based on the variable's type, effectively introducing the identifier to the compiler and linking/executing code.
+</details>
 
 # Summary of Lecture 5:
 
@@ -711,30 +770,39 @@ In C, stack memory issues, particularly involving pointers, can lead to erroneou
 **1. Program Interaction & I/O Redirection**
 
 - Q: Provide an example using shell command syntax for redirecting both standard input and standard output using a C executable file named `example.out`.
+<details>
 
-  A: `./example.out &lt; infile > outfile`
+  A: `./example.out < infile > outfile`
+</details>
 
 **2. I/O and stdio.h Library**
 
 - Q: Explain how the `scanf` function works, providing an example that reads a string and an integer.
+<details>
 
   A: `scanf` reads input according to a format string and stores values in variables. Example: `scanf(“%s %d”, buffer, &int_var)`
+</details>
 
 **3. File Management Functions**
 
 - Q: Describe the purpose of the `O_TRUNC` flag in the `open` function, and explain a scenario where it might be used.
+<details>
 
   A: `O_TRUNC` flag truncates the file to zero length if it exists; applicable when overwriting a file.
+</details>
 
 **4. File Descriptors & System Calls**
 
 - Q: What are the default file descriptors, and why are system calls like read and write slower than other functions?
+<details>
 
   A: Default: 0 (stdin), 1 (stdout), 2 (stderr). System calls are slower because they involve switching from user to kernel mode, which is computationally expensive.
+</details>
 
 **5. File Streams and Management**
 
 - Q: Write a short code snippet that opens a file for writing, checks for errors in opening, and then closes the file.
+<details>
 
   A: 
 
@@ -753,38 +821,49 @@ In C, stack memory issues, particularly involving pointers, can lead to erroneou
   fclose(fp);
 
   ```
+</details>
 
   
 
 **6. Reading from File Streams**
 
 - Q: Explain the primary difference between `fgetc` and `fgets` in reading from file streams.
+<details>
 
   A: `fgetc` reads a single character, while `fgets` reads up to `size-1` characters or until a newline is encountered, storing the result in a string.
+</details>
 
 **7. Binary File I/O**
 
 - Q: What specific use cases might necessitate the use of binary file I/O (`fread` and `fwrite`) over ASCII?
+<details>
 
   A: Binary I/O is useful for dealing with data not in human-readable format, such as images, executable files, or data needing efficient storage and retrieval without conversion.
+</details>
 
 **8. File Positioning**
 
 - Q: How does `fseek` function in binary file manipulation, and why might it be used?
+<details>
 
   A: `fseek` sets the file position indicator, affecting subsequent read/write operations. It's used to navigate to specific positions in a file, e.g., for random access data retrieval.
+</details>
 
 **9. Special File Streams**
 
 - Q: Describe how stderr can be redirected independently and along with stdout with the use of shell command syntax.
+<details>
 
   A: Independently: `./a.out 2> errfile`; along with stdout: `./a.out > outfile 2>&1`
+</details>
 
 **10. File Manipulation**
 
 - Q: Explain why closing a file after writing is crucial, mentioning its impact on buffer and security.
+<details>
 
   A: Closing ensures data in the output buffer is written to disk and releases system resources, preventing potential data corruption or loss. It also avoids potential security risks, like unauthorized access to open file pointers.
+</details>
 
 # Summary: Lecture 6 - Structures in C Programming
 
@@ -955,62 +1034,82 @@ In C, stack memory issues, particularly involving pointers, can lead to erroneou
 #### 1. Structure Basics and Comparison
 
 **Q1:** What are two main features of a Java class that a C struct does not possess?
+<details>
 
 - A: Methods and inheritance
+</details>
 
 #### 2. Tag Usage and Accessing Members
 
 **Q2:** How is the size of a structure determined and how is a member of a structure accessed in C?
+<details>
 
 - A: Using `sizeof()` for size determination and using the dot operator for member access.
+</details>
 
 #### 3. Pointers to Structures
 
 **Q3:** What are the two equivalent syntax forms to access members of a structure using a pointer?
+<details>
 
 - A: Using arrow operator `p->x` and using dereference `(*p).x`.
+</details>
 
 #### 4. Internal Padding and Size
 
 **Q4:** Why might the size of a struct (determined using `sizeof`) not be equal to the sum of the sizes of its individual members?
+<details>
 
 - A: Due to internal padding, which aligns data in memory for more efficient access.
+</details>
 
 #### 5. Nested and Recursive Structures
 
 **Q5:** How can a recursive structure be created in C?
+<details>
 
 - A: By including a pointer to the same structure type within the structure definition.
+</details>
 
 #### 6. Anonymous Structures and Scope
 
 **Q6:** When are anonymous structures particularly useful and what is the consequence of using an unknown struct and then defining it afterward?
+<details>
 
 - A: Useful when wanting to use structures without creating a new data type, and defining an unknown struct afterward can help declare pointers beforehand and define it in detail later.
+</details>
 
 #### 7. Structures Interaction with Functions
 
 **Q7:** What is the key difference between structures and arrays when they are returned from a function, in terms of memory and performance?
+<details>
 
 - A: Detailed answer based on deep understanding could include discussion on how structures can be returned by value (copying all members), whereas arrays cannot be returned by value but rather by reference (pointer).
+</details>
 
 #### 8. Using `typedef`
 
 **Q8:** Explain how the `typedef` keyword is utilized in the context of structures and why it is beneficial?
+<details>
 
 - A: `typedef` is used to create a new name for a data type and is beneficial to make code more readable and to alleviate the need to use the `struct` keyword when declaring variables of the struct type.
+</details>
 
 #### 9. Declaration vs Definition
 
 **Q9:** Why might struct declarations generally occur outside functions while definitions occur inside functions in C programming?
+<details>
 
 - A: Declarations outside functions make the structure type available to multiple functions (file scope), while definitions inside functions restrict the scope and prevent potential naming conflicts.
+</details>
 
 #### 10. Initialization and Assignment
 
 **Q10:** Describe designated initializers and give an example of how they might be used to initialize a structure in C.
+<details>
 
 - A: Designated initializers allow initializing structures with values in a non-sequential order or partially, by specifying the name of the field to which a value is being assigned. Example: `struct example ex = {.x = 1, .z = 2};` initializes the `x` and `z` fields of the struct `ex` without initializing the `y` field.
+</details>
 
 
 # Summary of Lecture 7: Arrays and Memory Layout in C
@@ -1116,30 +1215,40 @@ In C, stack memory issues, particularly involving pointers, can lead to erroneou
 How is it possible to use pointer arithmetic to access the elements of a multi-dimensional array in C, and how does this relate to memory layout? Provide an example code snippet to illustrate your answer.
 
 #### Answer 1
+<details>
 
 Pointer arithmetic allows accessing and manipulating array elements by manipulating the memory address directly. In the context of multi-dimensional arrays like `char a[2][3]`, using pointers, one can navigate through elements by calculating the precise memory address. Example: `*(*(a + i) + j)` accesses the element `a[i][j]`.
+</details>
 
 #### Question 2: Memory Writing and Safety
 
 Explain the risks associated with writing data anywhere in memory using pointers, as shown in the provided example in the notes. How might this affect other variables and memory segments?
 
 #### Answer 2
+<details>
 
 Writing data anywhere in memory using pointers can overwrite other important data, corrupt memory, or cause undefined behavior. It could modify other variables, corrupt data, or even alter executable code, leading to erratic program behavior, crashes, or security vulnerabilities.
+</details>
+
 
 #### Question 3: Structs Initialization
 
 Describe why structs in C cannot use pointers for array fields during initialization and how memory allocation for structs works.
 
 #### Answer 3
+<details>
 
 Structs need to allocate their own memory space for array fields; they can't simply use pointers during initialization because the array name in a struct is an actual allocated memory space, not a pointer. Initialization of array fields in a struct should be explicit and, if using an array, must be element-wise or direct using another struct.
+</details>
+
 
 #### Question 4: Memory Segment Usage
 
 Define the purpose of each memory segment (Stack, Heap, Data, and Code) in the C programming memory layout.
 
 #### Answer 4
+<details>
+
 
 - **Stack**: Stores local variables and function call information.
 
@@ -1148,56 +1257,74 @@ Define the purpose of each memory segment (Stack, Heap, Data, and Code) in the C
 - **Data**: Stores global and static variables.
 
 - **Code**: Contains the instructions to be executed.
+</details>
+
 
 #### Question 5: Sizeof Usage
 
 Describe the `sizeof` operator and its significance in memory management in C. How does it help in determining the memory size of different data types and structures?
 
 #### Answer 5
+<details>
 
 The `sizeof` operator provides the size (in bytes) of the data type or object passed to it. It assists developers in understanding memory size requirements, which is crucial for dynamic memory allocation and data management, ensuring that enough memory is allocated for variables and data structures.
+</details>
 
 #### Question 6: Memory Abstraction Across Languages
 
 Explain the role of memory abstraction in programming languages, contrasting between C and Java based on memory API and data management.
 
 #### Answer 6
+<details>
 
 Memory abstraction simplifies programming and enhances code portability by concealing hardware peculiarities. In C, memory management is manual, offering a simpler yet potentially more complex memory story with direct control over memory through pointers. In contrast, Java abstracts memory management away from the programmer, handling memory allocation and deallocation automatically via the Garbage Collector, offering a different set of operations for manipulating memory.
+</details>
+
 
 #### Question 7: Static and Stack Allocation
 
 Elaborate on static and stack allocation in C. How do they differ in terms of variable lifetime and memory usage?
 
 #### Answer 7
+<details>
+
 
 - **Static Allocation**: Variables (global or with `static` keyword) reside in the Data Segment and retain their values between function calls, having a program lifetime.
 
 - **Stack Allocation**: Variables are automatically created and destroyed with function calls and returns, having a function lifetime. Memory is reclaimed automatically when the function exits.
+</details>
+
 
 #### Question 8: Pointers and Arrays Syntax and Semantics
 
 Differentiate between `a[5]` and `*(p + 5)` in the context of arrays and pointers in C. When and why might you use one form over the other?
 
 #### Answer 8
+<details>
+
 
 Both `a[5]` and `*(p + 5)` are semantically equivalent in C, accessing the 6th element of an array. However, `a[5]` is more commonly used with arrays due to its clearer and more straightforward syntax, while `*(p + 5)` might be preferred in contexts where pointer arithmetic or pointer iteration is more explicit or logical, such as dynamic memory management scenarios or linked structures.
+</details>
+
 
 #### Question 9: Struct Memory Consistency
 
 Discuss why all structs in C require their own allocated memory, and how does this aspect influence struct initialization and assignment?
 
 #### Answer 9
-
+<details>
 Structs in C must have their own allocated memory to ensure data integrity and consistency. During initialization or assignment, all data must be copied to the struct’s own memory space to prevent potential issues related to memory deallocation or data modification in the original data source, ensuring that the struct maintains a stable data state.
+</details>
 
 #### Question 10: Array Initialization and Memory Addresses
 
 Describe the memory layout for a 2-dimensional array (e.g., `char a[2][3]`) in C. When retrieving memory addresses of elements and the array itself using pointers, what observations can be made based on the provided examples?
 
 #### Answer 10
+<details>
 
 A 2-dimensional array like `char a[2][3]` in C is stored in memory as a single contiguous block, with all rows occurring consecutively, with no padding or delimiters between rows. When retrieving memory addresses, it’s observable that `a`, `&a`, `&a[0]`, and `&a[0][0]` point to the same memory address, as the name of the array represents the address of its first element. Further, accessing elements `&a[i][j]` involves calculating their position using base address arithmetic.
+</details>
 
 # Summary: Lecture 8 on Unions and Structures in C Programming
 
@@ -1314,12 +1441,18 @@ A 2-dimensional array like `char a[2][3]` in C is stored in memory as a single c
 #### Q1: Pointers and Structures
 
 In the expression `*s->t++`, what does the `++` operator increment?
+<details>
 
 **A1:** The pointer `t` inside the structure pointed to by `s`.
 
+</details>
+
 #### Q2: Passing Structures to Functions
 
+<details>
+
 In the first example provided in the slides (Slide 3), why does `f.a` remain 100 even after the function `doIt(f)` is called?
+</details>
 
 **A2:** The structure `f` is passed by value, so the function modifies a copy of `f` and not `f` itself.
 
@@ -1327,54 +1460,82 @@ In the first example provided in the slides (Slide 3), why does `f.a` remain 100
 
 Why does the compiler introduce padding inside structures, and how does this influence the use of the `sizeof` operator on a structure?
 
+<details>
+
 **A3:** Padding is introduced to ensure data alignment, making memory access more efficient. The `sizeof` operator considers padding, providing the total memory used, including the inserted padding bytes.
+</details>
 
 #### Q4: Endianness
 
 How would the integer `0x12345678` be stored in a little-endian and big-endian system?
 
 **A4:** 
+<details>
 
 - Little-endian: 78 56 34 12 
 
 - Big-endian: 12 34 56 78 
+</details>
 
 #### Q5: Unions and Memory
 
 Considering unions share memory for all members, what risk do programmers face when using unions and how can it be mitigated?
 
-**A5:** Programmers might access the incorrect type of data, leading to erroneous results or undefined behavior. Mitigation involves careful tracking of which type of data is currently stored in the union, often by using an additional struct member as a type indicator.
+**A5:** 
+<details>
+
+Programmers might access the incorrect type of data, leading to erroneous results or undefined behavior. Mitigation involves careful tracking of which type of data is currently stored in the union, often by using an additional struct member as a type indicator.
+</details>
 
 #### Q6: Pointer Dereferencing
 
 Given the expression `(*s).t`, explain the operation and alternative ways to achieve the same result.
 
-**A6:** The expression accesses the member `t` of the structure pointed to by `s`. An alternative way to write this is `s->t`.
+**A6:** 
+<details>
+
+The expression accesses the member `t` of the structure pointed to by `s`. An alternative way to write this is `s->t`.
+</details>
 
 #### Q7: Union Initialization and Access
 
 How is a union initialized, and what happens if a member other than the one used for initialization is accessed?
 
-**A7:** A union is initialized using the type of its first member. If a different member is accessed, the stored data will be interpreted in the context of that member’s type, which can lead to unexpected or undefined behavior.
+**A7:** 
+<details>
+
+A union is initialized using the type of its first member. If a different member is accessed, the stored data will be interpreted in the context of that member’s type, which can lead to unexpected or undefined behavior.
+</details>
 
 #### Q8: Data Alignment
 
 On a 64-bit machine where the word size is 8 bytes, if a struct contains an int (4 bytes) and a char (1 byte), how much memory will be allocated to this struct considering alignment, and why?
 
-**A8:** 12 bytes: 4 bytes for the int, 1 byte for the char, and 7 bytes of padding to align the structure size to a multiple of 8 bytes.
+**A8:** 
+<details>
+
+12 bytes: 4 bytes for the int, 1 byte for the char, and 7 bytes of padding to align the structure size to a multiple of 8 bytes.
+</details>
 
 #### Q9: Safety and Type Checking
 
 Discuss a scenario where improper use of a union might lead to a runtime error or incorrect output.
 
-**A9:** Improper usage occurs when a union’s member is set with one type (e.g., float) and accessed using another (e.g., int), interpreting the binary data of the float as an int, which leads to undefined or erroneous outputs.
+**A9:** 
+<details>
+
+Improper usage occurs when a union’s member is set with one type (e.g., float) and accessed using another (e.g., int), interpreting the binary data of the float as an int, which leads to undefined or erroneous outputs.
+</details>
 
 #### Q10: Combining Structures and Unions
 
 In the context of the given `product` struct, explain a scenario where combining structures and unions is beneficial and discuss any challenges it might pose.
 
-**A10:** The combination allows varied data types (e.g., `units` and `kgs`) in a single data structure, facilitating versatile data representation. Challenges include ensuring type-safe access and avoiding inconsistencies by meticulously managing the `type` identifier and the corresponding `qty` union access.
+**A10:** 
+<details>
 
+The combination allows varied data types (e.g., `units` and `kgs`) in a single data structure, facilitating versatile data representation. Challenges include ensuring type-safe access and avoiding inconsistencies by meticulously managing the `type` identifier and the corresponding `qty` union access.
+</details>
 
 # Summary of Lecture 9: Functions and Memory in C Programming
 
@@ -1473,6 +1634,7 @@ In the context of the given `product` struct, explain a scenario where combining
 ### Quiz Questions
 
 **1. How is the function `strl` defined and what is its functionality?**
+<details>
 
    Answer: The `strl` function is defined as:
 
@@ -1493,28 +1655,46 @@ In the context of the given `product` struct, explain a scenario where combining
    ```
 
    It calculates and returns the length of the string `s` by iterating through each character until it reaches the null character `\0`.
+</details>
 
 **2. Why does the code snippet `swap(x, y);` with `void swap(int a, int b)` not swap the values of `x` and `y`?**
+<details>
 
    Answer: The values of `x` and `y` are not swapped because the swap function is using pass-by-value, meaning it swaps the values of the local variables `a` and `b` inside the function, which doesn't affect `x` and `y` outside of the function.
+</details>
 
 **3. How is parameter passing achieved through "by-value" semantics and what are its characteristics?**
+<details>
 
    Answer: By-value parameter passing involves passing the actual values of the parameters, creating a copy of them in the function. Any modifications inside the function do not affect the original variables. A copy of the parameter is created on function entry and initialized to the value passed by the caller.
+</details>
 
 **4. What is the purpose of the `pushl %ebp` and `movl %esp,%ebp` operations in the assembly code of the swap example?**
 
+<details>
+
    Answer: `pushl %ebp` saves the current base pointer on the stack to preserve the calling function’s frame, and `movl %esp,%ebp` sets up the new frame pointer for the called function, making the stack frame for the called function.
+
+</details>
 
 **5. What is the problem in the swap function void `swap(int* a, int* b)` and how is it rectified in the provided slides?**
 
+<details>
+
    Answer: The problem is not provided explicitly in the slides. But in a generic situation, if the pointer version of `swap` function wasn’t working, probable reasons could be null pointers, uninitialized pointers, or memory access issues. It's rectified by dereferencing the pointers and swapping the values stored in the memory locations they point to.
+
+</details>
 
 **6. How does a function in C return control to the caller according to the provided notes, and can the return value be ignored?**
 
+<details>
+
    Answer: A function in C returns control to the caller using the `return` statement, which may or may not include a return value. Yes, the return value can be ignored by the caller.
+</details>
 
 **7. In the context of the slides, what are the three parameter-passing methods historically provided by programming languages?**
+
+</details>
 
    Answer: The three parameter-passing methods historically provided by programming languages are: 
 
@@ -1523,18 +1703,28 @@ In the context of the given `product` struct, explain a scenario where combining
    - Passed by reference
 
    - Passed by value-result
+</details>
 
 **8. According to the notes, how does the operating system create a process in terms of resource assignment, and what are the four segments each process contains in memory?**
+<details>
 
    Answer: The OS creates a process by assigning memory and other resources, and logically subdividing memory assigned to a process into stack, heap, data, and code segments.
 
+</details>
+
 **9. Explain the difference between `movl %eax, (%edx)` and `movl (%ecx), %eax` in assembly language as provided in the swap function example.**
 
+<details>
+
    Answer: `movl %eax, (%edx)` moves the value in register `%eax` to the memory location pointed to by `%edx`. On the other hand, `movl (%ecx), %eax` moves the value from the memory location pointed to by `%ecx` into the `%eax` register.
+</details>
 
 **10. What role does the stack play in managing the state of a function (such as local variables and return address) during recursive function calls, according to the slides?**
 
+<details>
+
    Answer: The stack holds "activation frames" or "call frames" which manage the state of functions during execution, including recursive function calls. For each function call, a new frame is pushed onto the stack, storing local variables and the return address. In the context of recursion, each new call creates a new frame on the stack, allowing each level of recursion to have its own set of local variables, parameters, and return address, without interfering with other function calls.
+</details>
 
 # Summary of Lecture 10:
 
@@ -1640,61 +1830,98 @@ In the context of the given `product` struct, explain a scenario where combining
 
    - Q1: What is the outcome of dereferencing a pointer-to-pointer and explain why? For example, given the statements `char c = 'a'; char* pc = &c; char** ppc = &pc;`, what is the value of `**ppc`?
 
+<details>
+
    - A1: The value of `**ppc` is `'a'`. `ppc` points to `pc`, and `pc` points to `c`, so `**ppc` dereferences to `c`.
+</details>
 
 2. **Memory Management**
 
    - Q2: What error might occur when trying to dereference a `NULL` pointer and why does this happen?
 
+<details>
+
    - A2: Dereferencing a `NULL` pointer may lead to a segmentation fault or bus error because it tries to access an invalid or unauthorized memory location.
+</details>
 
 3. **Character Arrays and Pointers**
 
    - Q3: How does the behavior of `char s[]` differ from `char* s` when trying to modify the string they point to, and why?
 
+<details>
+
    - A3: `char s[]` allows modification of the string it holds because it allocates the string in modifiable memory. In contrast, `char* s` may point to a string in non-modifiable memory (like the text segment), making modifications undefined or illegal.
+</details>
 
 4. **Strings and Function Passing**
 
    - Q4: Explain the principle of how C passes a character array to a function and how the function accesses it.
 
+<details>
+
    - A4: When a character array is passed to a function, C passes a copy of the address of the first element of the array (essentially a `char*`). The function accesses it using this pointer.
+</details>
 
 5. **Function Parameter Handling**
 
    - Q5: When a function parameter is set equal to a new value inside a function, does it affect the original argument passed? Justify your answer.
 
+<details>
+
    - A5: No, it does not affect the original argument passed because the function only modifies its own copy of the parameter.
+
+</details>
 
 6. **Double Pointer Use Case**
 
    - Q6: What problem arises with the signature `void skipSpaces(char *strPtr)` in trying to modify `strPtr` to skip spaces, and how is it resolved?
 
+<details>
+
    - A6: The function `skipSpaces` will not be able to modify the original `strPtr` because it receives a copy of the pointer. Changing it to `void skipSpaces(char **strPtr)` resolves this, as it allows us to modify the original pointer by passing its address.
+
+</details>
 
 7. **Pointer Arithmetic and Dereferencing**
 
    - Q7: Explain how the bracket notation in pointers (`pointer[index]`) relates to pointer arithmetic and dereferencing.
 
+<details>
+
    - A7: The bracket notation `pointer[index]` is equivalent to `*(pointer + index)`. It performs pointer arithmetic to reach the memory location offset by `index` from `pointer`, and then dereferences to access the value.
+
+</details>
 
 8. **Compile-time Type Sizes**
 
    - Q8: Why is it crucial for C to determine the sizes of different data types at compile time regarding pointer arithmetic?
 
+<details>
+
    - A8: It's crucial because, during pointer arithmetic, C needs to know how many bytes to add/subtract based on the type of data to which the pointer points, ensuring that it points to the correct memory location.
+
+</details>
 
 9. **Const Pointers**
 
    - Q9: Explain the difference and use-cases between `const char *str` and `char* const str`.
 
+
+<details>
+
    - A9: `const char *str` means the characters `str` points to can't be changed through `str`. `char* const str` means the pointer `str` itself can’t be changed to point elsewhere. The former is used when the content should remain constant, and the latter when the pointer address should remain constant.
+
+</details>
 
 10. **General Pointer Understanding**
 
     - Q10: Describe how pointer arithmetic works differently when incrementing a pointer to an `int` versus a pointer to a `char`. Provide examples and justify the difference.
 
+<details>
+
     - A10: When incrementing a pointer to a `char`, it increases by 1 byte because a char is 1 byte. For a pointer to an `int` (assuming an int is 4 bytes), incrementing it will increase the pointer by 4 bytes. This difference is because pointer arithmetic works based on the size of the type to which it points to ensure it points to the next element of that type in memory.
+
+</details>
 
 # Summary of Lecture 11:
 
@@ -1806,62 +2033,86 @@ In the context of the given `product` struct, explain a scenario where combining
 
    - What is the fundamental difference between `memcpy` and `memmove`?
 
+<details>
+
    - Answer: `memcpy` does not support overlapping memory regions, whereas `memmove` does.
+
+</details>
 
 2. **Generics in C:**
 
    - Why does C use `(void *)` to enable a semblance of polymorphic behavior?
+<details>
 
    - Answer: `(void *)` allows the function to be applied to pointers that point to different object representations without the need to directly inspect the object's contents.
+</details>
 
 3. **Swapping Challenge:**
 
    - What issue arises with storage requirements when implementing a generic swap function?
 
+<details>
+
    - Answer: Different data types require different storage requirements (e.g., ints need 4 bytes, shorts need 2 bytes, etc.).
+</details>
 
 4. **Generic Swap Problem:**
 
    - Why can't we dereference a pointer of type `(void *)` in generic swap functions?
+<details>
 
    - Answer: `(void *)` does not provide sufficient information about what the pointer points to.
+</details>
 
 5. **Size Matters:**
 
    - In the context of swapping in C, how does the type of data being swapped affect the temporary storage used in a generic swap function?
 
+<details>
+
    - Answer: The type of data dictates the number of bytes required for the temporary storage (e.g., ints require 4 bytes, shorts require 2 bytes, etc.).
+</details>
 
 6. **Polymorphism and Pointers:**
 
    - How does C use pointers to apply a function "polymorphically"?
+<details>
 
    - Answer: By utilizing `(void *)` and low-level memory operations plus casting, functions can be applied to pointers that point to objects of various types without requiring direct inspection of the objects' contents.
+</details>
 
 7. **Array Manipulation:**
 
    - Why is it necessary to cast `(void *)` to `(char *)` when performing operations on arrays in a generic manner?
 
+<details>
+
    - Answer: C doesn’t allow incrementing a `(void *)` pointer, and casting to `(char *)` ensures that all computations are performed on bytes, aligning with different data types' memory representation.
+</details>
 
 8. **Constant Clarification:**
 
    - What does declaring a pointer as `const char **strPtr` restrict you from modifying?
+<details>
 
    - Answer: It restricts you from modifying the characters pointed to by `*strPtr`.
+</details>
 
 9. **Array Rotation Exercise:**
 
    - What does the `rotate` function do with an array between the indices represented by `front` and `sep`, and between `sep` and `end`?
+<details>
 
    - Answer: It moves elements between `front` and `sep` to the end of the array, and elements between `sep` and `end` to the front.
+</details>
 
 10. **Arrays and Generics Challenge:**
 
     - When using the `swap_ends` function on arrays of different element types (e.g., ints, chars, strings), what parameter must be adjusted to accommodate the different types and why?
+<details>
 
     - Answer: The `elem_bytes` parameter must be adjusted to match the size of the array element type being worked on to correctly navigate memory and manipulate the correct bytes.
-
+<details>
 
 # Summary of Lecture 12: Dynamic Memory Allocation
 
@@ -1976,80 +2227,94 @@ In the context of the given `product` struct, explain a scenario where combining
    - How does static memory allocation differ from dynamic memory allocation on the heap in C?
 
    
+<details>
 
    _Answer: Static memory allocation is done at compile time and doesn’t change during program run, while dynamic memory allocation on the heap occurs at runtime and can change as the program runs._
+</details>
 
 2. **Memory Layout:**
 
    - How does the stack part of a process's memory layout differ from the heap in terms of their primary usage?
 
-   
+   <details>
 
    _Answer: The stack keeps track of active subroutine control and stores local variables, while the heap is used for dynamic memory allocation/deallocation for variables created and disposed of with memory allocation functions during runtime._
+</details>
 
 3. **Memory Mapping (`mmap`):**
 
    - What is the primary function of `mmap` in the context of memory allocation in a C program?
 
-   
+   <details>
 
    _Answer: `mmap` is used to memory map a piece of address space for use by the application, enabling dynamic allocation by asking the OS for a chunk of memory._
-
+</details>
 4. **Dynamic Memory Functions:**
 
    - What is the primary difference between the `malloc` and `calloc` functions?
 
-   
+   <details>
 
    _Answer: `malloc` allocates specified bytes without initializing the memory, while `calloc` allocates memory for an array of elements and initializes the memory to zero._
+</details>
 
 5. **Memory Operation:**
 
    - What is the purpose of the `memcpy` function and what does it return?
 
-   
+   <details>
 
    _Answer: `memcpy` copies n bytes from a source to a destination memory area and returns a pointer to the destination._
+</details>
 
 6. **Memory Issues:**
 
    - Describe what a memory leak is and how it might impact a long-running program.
 
-   
+   <details>
 
    _Answer: A memory leak occurs when allocated memory is not freed appropriately. For long-running programs, memory leaks can cause the program to run out of memory or significantly slow down the system over time._
+</details>
 
 7. **Memory Best Practices:**
 
    - Why is it recommended to set a pointer to NULL after freeing the memory it points to?
 
-   
+   <details>
 
    _Answer: Setting a pointer to NULL after freeing memory helps in preventing usage (dereferencing or deallocation) of the memory that has already been freed, avoiding undefined behavior._
+
+</details>
 
 8. **Memory Allocation with `calloc`:**
 
    - In the context of dynamic memory allocation in C, how would you use `calloc` to allocate memory for an array of 20 integers, and what is the purpose of using `calloc` over other allocation functions for this use case?
 
-   
+   <details>
 
    _Answer: You would use `calloc` as follows: `int* arr = (int*)calloc(20, sizeof(int));`. Using `calloc` in this case ensures that the allocated memory is initialized to zero._
+
+</details>
 
 9. **Memory Allocation Challenges:**
 
    - Explain what memory fragmentation is and provide a scenario where it might occur.
 
-   
+   <details>
 
    _Answer: Memory fragmentation is when the system may have enough memory to satisfy a request but the memory is not in a contiguous block that can be allocated as a single chunk. It might occur when memory is allocated and deallocated in such a manner that free memory is broken into small blocks interspersed with allocated blocks._
+
+</details>
 
 10. **Allocator Requirements:**
 
     - Why is it crucial that memory allocators must be able to handle arbitrary interleaving of `malloc()` and `free()` requests?
 
-    
+    <details>
 
     _Answer: It is crucial to handle arbitrary interleaving of `malloc()` and `free()` to efficiently manage memory by ensuring that memory is allocated and deallocated appropriately, preventing memory leaks and ensuring memory is available for allocation requests during program execution.
+
+</details>
 
 # Summary: Lecture 13 - Data Structures
 
@@ -2232,59 +2497,79 @@ Quiz:
 1. **Array Limitations**
 
     - Given that arrays are not ideal when the number of elements or the shape of the structure is expected to change, explain why deleting an element (like the number "7" from the provided example) from an array can be problematic.
+<details>
 
     - Answer: Deleting an element requires moving all subsequent elements, resulting in additional work and computational overhead.
+</details>
 
 2. **Linked-List Basics**
 
     - What distinguishes the first node from any other node in a singly-linked list?
+<details>
 
     - Answer: The first node in the sequence is not pointed-to by any other node.
+</details>
 
 3. **Memory Management**
 
     - When creating a new node in a linked list, which function is used to allocate memory, and why is it important to free this memory once the node is removed?
+<details>
 
     - Answer: `malloc()` is used to allocate memory. It's important to free this memory using `free()` to prevent memory leaks.
+</details>
 
 4. **Insertion in Linked-List**
 
     - In the given insertion function, what is the significance of copying the contents of *data to newNode->data byte by byte?
+<details>
 
     - Answer: This ensures a deep copy of the data, so that the node has its own distinct copy of the data, rather than just pointing to the same memory location.
+</details>
 
 5. **Linked-List Deletion**
 
     - What happens if you attempt to remove a node that doesn't exist in the linked list?
+<details>
 
     - Answer: The function prints "Error: Node not found in the list."
+</details>
 
 6. **Doubly-Linked Lists**
 
     - How does a doubly-linked list extend the functionality of a singly-linked list?
+<details>
 
     - Answer: A doubly-linked list has both a “previous-node” and a “next-node” pointer, allowing traversal in both directions.
+</details>
 
 7. **Stack Meta-data**
 
     - What metadata is stored in the provided stack structure and why?
+<details>
 
     - Answer: The stack stores the number of elements (`nelems`), the size of each element (`elem_size_bytes`), and a pointer to the current ‘top-of-stack’ (`top`). This metadata helps in managing and accessing the stack efficiently.
+</details>
 
 8. **Stack Operations**
 
     - In the `stack_pop` function, what would potentially happen if you try to pop an element from an empty stack?
+<details>
 
     - Answer: It leads to an error, as indicated by the comment "panic: trying to pop an empty stack".
+</details>
 
 9. **Efficient Stack Design**
 
     - How does the "More Efficient Stack" differ from the earlier stack representation in terms of memory storage?
+<details>
 
     - Answer: The more efficient stack avoids allocating a separate struct for stack nodes by inlining data directly into the stack structure, thus saving memory and potentially improving access times.
+</details>
 
 10. **Array vs. Linked List**
 
     - Given the advantages of linked lists over arrays in certain scenarios, why might one still opt to use an array in some cases?
+<details>
 
     - Answer: Arrays might be chosen due to their constant-time O(1) access to elements (by index), memory locality (which can lead to better cache performance), and simpler implementation for certain operations.
+</details>
