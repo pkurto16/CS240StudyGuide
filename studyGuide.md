@@ -92,7 +92,7 @@
 
 **Quiz Questions**
 
-1. **Code Understanding**: Explain the function and process of the initial C code snippet provided, especially focusing on how it uses pointers and character arrays.
+1. **Code Understanding**: Explain the function and process of the initial C code snippet provided in the slides, especially focusing on how it uses pointers and character arrays.
 <details>
 
    The initial code snippet demonstrates usage of pointers and character arrays in C. It might involve direct memory allocation for a buffer array (`char buf[2048]`) and possibly using a pointer (`char *p = buf`) to traverse and manipulate the array. This usage involves the pointer directing to specific memory addresses and likely adjusting values stored within the array, exemplifying the direct, unabstracted management and manipulation of memory spaces in C.
