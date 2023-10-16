@@ -1,6 +1,4 @@
-# Lecture 2:
-
-**Summary of Lecture 2: Language Overview and C Language Insights**
+# Summary of Lecture 2: Language Overview and C Language Insights
 
 1. **Introduction and Code Example**
 
@@ -139,7 +137,7 @@ Type conversion in C can be implicit or explicit. Implicit conversion (like assi
 
 In C, stack memory issues, particularly involving pointers, can lead to erroneous or insecure program behavior. When a function returns, the stack memory utilized is deallocated, potentially leaving pointer addresses directed at garbage values or vulnerable spaces, risking unintended data leaks, misreads, or unauthorized memory access unless managed meticulously.
 
-### Summary: Lecture 3 - Basic Data Types in C
+# Summary: Lecture 3 - Basic Data Types in C
 
 #### Code Understanding
 
@@ -429,9 +427,8 @@ In C, stack memory issues, particularly involving pointers, can lead to erroneou
 
     Answer: Declarations in C allocate storage, and optionally initialize variables (e.g., int lower = 3;). Without explicit initialization, local variables may contain random values, while static and extern variables are zero-initialized.
 
-Lecture 4: 
 
-**Summary**
+# Summary of Lecture 4:
 
 1. **Control Flow and Statements**
 
@@ -571,9 +568,7 @@ Lecture 4:
 
     - **Answer**: A declaration introduces a name and its type to the compiler without allocating storage, whereas a definition allocates storage based on the variable's type, effectively introducing the identifier to the compiler and linking/executing code.
 
-Lecture 5:
-
-### Summary:
+# Summary of Lecture 5:
 
 **1. Program Interaction:**
 
@@ -791,9 +786,7 @@ Lecture 5:
 
   A: Closing ensures data in the output buffer is written to disk and releases system resources, preventing potential data corruption or loss. It also avoids potential security risks, like unauthorized access to open file pointers.
 
-Lecture 6: 
-
-### Summary: Lecture 6 - Structures in C Programming
+# Summary: Lecture 6 - Structures in C Programming
 
 #### 1. **Basic Structure Definition and Usage**
 
@@ -1019,9 +1012,8 @@ Lecture 6:
 
 - A: Designated initializers allow initializing structures with values in a non-sequential order or partially, by specifying the name of the field to which a value is being assigned. Example: `struct example ex = {.x = 1, .z = 2};` initializes the `x` and `z` fields of the struct `ex` without initializing the `y` field.
 
-Lecture 7:
 
-### Summary: Arrays and Memory Layout in C
+# Summary of Lecture 7: Arrays and Memory Layout in C
 
 #### Slide Content - Key Points
 
@@ -1207,9 +1199,7 @@ Describe the memory layout for a 2-dimensional array (e.g., `char a[2][3]`) in C
 
 A 2-dimensional array like `char a[2][3]` in C is stored in memory as a single contiguous block, with all rows occurring consecutively, with no padding or delimiters between rows. When retrieving memory addresses, it’s observable that `a`, `&a`, `&a[0]`, and `&a[0][0]` point to the same memory address, as the name of the array represents the address of its first element. Further, accessing elements `&a[i][j]` involves calculating their position using base address arithmetic.
 
-Lecture 8:
-
-### Summary: Lecture 8 on Unions and Structures in C Programming
+# Summary: Lecture 8 on Unions and Structures in C Programming
 
 #### **Slide 1-2: Structures Recap**
 
@@ -1385,9 +1375,8 @@ In the context of the given `product` struct, explain a scenario where combining
 
 **A10:** The combination allows varied data types (e.g., `units` and `kgs`) in a single data structure, facilitating versatile data representation. Challenges include ensuring type-safe access and avoiding inconsistencies by meticulously managing the `type` identifier and the corresponding `qty` union access.
 
-Lecture 9:
 
-### Summary of Lecture 9: Functions and Memory in C Programming
+# Summary of Lecture 9: Functions and Memory in C Programming
 
 #### Functions in C
 
@@ -1547,9 +1536,7 @@ Lecture 9:
 
    Answer: The stack holds "activation frames" or "call frames" which manage the state of functions during execution, including recursive function calls. For each function call, a new frame is pushed onto the stack, storing local variables and the return address. In the context of recursion, each new call creates a new frame on the stack, allowing each level of recursion to have its own set of local variables, parameters, and return address, without interfering with other function calls.
 
-Lecture 10:
-
-**Summary of the Lecture Information**
+# Summary of Lecture 10:
 
 - **Pointers Basics**
 
@@ -1709,9 +1696,7 @@ Lecture 10:
 
     - A10: When incrementing a pointer to a `char`, it increases by 1 byte because a char is 1 byte. For a pointer to an `int` (assuming an int is 4 bytes), incrementing it will increase the pointer by 4 bytes. This difference is because pointer arithmetic works based on the size of the type to which it points to ensure it points to the next element of that type in memory.
 
-Lecture 11:
-
-**Summary:**
+# Summary of Lecture 11:
 
 - **Generics and Modular Programming in C:**
 
@@ -1877,9 +1862,8 @@ Lecture 11:
 
     - Answer: The `elem_bytes` parameter must be adjusted to match the size of the array element type being worked on to correctly navigate memory and manipulate the correct bytes.
 
-Lecture 12:
 
-### Summary of Lecture 12: Dynamic Memory Allocation
+# Summary of Lecture 12: Dynamic Memory Allocation
 
 #### Memory in C
 
@@ -2067,9 +2051,7 @@ Lecture 12:
 
     _Answer: It is crucial to handle arbitrary interleaving of `malloc()` and `free()` to efficiently manage memory by ensuring that memory is allocated and deallocated appropriately, preventing memory leaks and ensuring memory is available for allocation requests during program execution.
 
-Lecture 13:
-
-### Summary: Lecture 13 - Data Structures
+# Summary: Lecture 13 - Data Structures
 
 #### 1. Arrays
 
