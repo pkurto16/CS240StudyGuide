@@ -8,7 +8,7 @@
 
 2. **Library Includes in C**
 
-   - `#include <stdio.h>` and `#include <string.h>`: Essential for including functionalities related to standard input/output and string operations respectively.
+   - `#include &lt;stdio.h>` and `#include &lt;string.h>`: Essential for including functionalities related to standard input/output and string operations respectively.
 
    - Functions like `getchar()` and `printf()` are derived from these includes.
 
@@ -93,50 +93,50 @@
 **10 Hard Quiz Questions**
 
 1. **Code Understanding**: Explain the function and process of the initial C code snippet provided, especially focusing on how it uses pointers and character arrays.
-
+<details>
    The initial code snippet demonstrates usage of pointers and character arrays in C. It might involve direct memory allocation for a buffer array (`char buf[2048]`) and possibly using a pointer (`char *p = buf`) to traverse and manipulate the array. This usage involves the pointer directing to specific memory addresses and likely adjusting values stored within the array, exemplifying the direct, unabstracted management and manipulation of memory spaces in C.
-
+</details>
 2. **Memory Management**: What is the significance of '\0' in C strings and how does its absence affect memory usage and function calls?
-
+<details>
 '\0' signifies the end of a string in C, making it crucial for functions that process strings to identify their termination. Without '\0', functions might continue reading adjacent memory, leading to undefined behavior and potential security risks, as it would read or write to unintended memory locations.
-
+</details>
    
 
 3. **Pointer Arithmetic**: Explain the statement `*p++ = c;` in the context of pointer arithmetic and array traversal.
-
+<details>
 In the statement `*p++ = c;`, `*p` dereferences the pointer, `c` is assigned to the memory location `p` points to, and `++` increments `p` to point to the next memory location. This is typical in array traversal, manipulating and moving through array elements via their memory addresses instead of indexed referencing.
-
+</details>
 4. **Function Detailing**: How does `strstr()` work in C and what kind of parameters and return values does it manage?
-
+<details>
 `strstr()` is a standard library function that finds the first occurrence of a substring in another string. It takes two string pointers as parameters and returns a pointer to the first occurrence of the second string in the first string. If the substring is not found, it returns a null pointer.
-
+</details>
 5. **Java vs C**: Enumerate and explain the key differences between Java and C concerning memory allocation and I/O management.
 
 
-
+<details>
 * Memory Allocation: Java uses garbage collection and safeguards against mismanagement like buffer overflows, while C necessitates manual, meticulous memory management, allowing for (and risking) direct memory access and manipulation.
 * I/O Management: Java uses high-level, object-oriented I/O management, involving stream objects like BufferedReader, while C implements lower-level I/O functions like printf and scanf, providing a more primitive but flexible interaction with I/O resources.
-
+</details>
 6. **Looping in C**: Describe the potential pitfalls and necessary cautions while embedding assignment statements inside expressions within a loop.
-
+<details>
 Embedding assignment statements inside expressions in loops, such as `while((c=getchar()) != EOF)`, can be efficient but risky. Misplacing an `=` (assignment) for `==` (equality check) can introduce logical errors, and if the variable is not used properly, it might cause an infinite loop or abrupt termination.
-
+</details>
 7. **Arrays and Memory**: How does array index incrementation interact with memory allocation and pointer arithmetic in C?
-
+<details>
 Array index incrementation in C simply moves to the next memory block based on the data type size. If you have `int arr[5]`, `arr + 1` points to the next `int` memory block. In relation to pointers, if `int *p = arr;`, then `p++` would also point to the next `int`, demonstrating that pointer arithmetic and array indexing are intertwined in navigating and manipulating memory in C.
-
+</details>
 8. **Preprocessor Directives**: What is the impact and risk of utilizing macros using `#define` in C, especially when interacting with memory and constants?
-
+<details>
 Using `#define` in C creates macros that replace instances in code during pre-processing. Risks involve unintended replacements, difficulty debugging, and potential ambiguity in complex expressions. Moreover, macros do not have type safety, increasing the risk of type mismanagement and subsequent memory issues.
-
+</details>
 9. **Data Types**: Elaborate on the implicit and explicit type conversions between integers and characters in C, emphasizing situations where data loss might occur.
-
+<details>
 Type conversion in C can be implicit or explicit. Implicit conversion (like assigning an `int` to a `float`) might work smoothly, while explicit type casting (like `float` to `int`) could lead to data loss as fractional parts are discarded. Additionally, casting between characters and integers can mismanage ASCII values if not handled with due diligence, leading to unintended symbol representation or data misinterpretation.
-
+</details>
 10. **Error Management**: Discuss potential errors and issues related to stack memory and pointers in C, especially when functions return and pointer addresses might refer to de-allocated or garbage memory.
-
+<details>
 In C, stack memory issues, particularly involving pointers, can lead to erroneous or insecure program behavior. When a function returns, the stack memory utilized is deallocated, potentially leaving pointer addresses directed at garbage values or vulnerable spaces, risking unintended data leaks, misreads, or unauthorized memory access unless managed meticulously.
-
+</details>
 # Summary: Lecture 3 - Basic Data Types in C
 
 #### Code Understanding
@@ -386,31 +386,31 @@ In C, stack memory issues, particularly involving pointers, can lead to erroneou
 **Quiz Questions**
 
 1. How does C language prioritize between expressiveness and efficiency in data types and their operations?
-
+<details>
    Answer: C prioritizes efficiency.
-
+</details>
    
 
 2. Describe the memory representation and an example operation (like increment) on the specialized data type "pit" provided in the lecture.
-
+<details>
    Answer: Pits are represented using two bits, where "00" denotes 0, "01" denotes 1, and so on. The postfix increment operation wraps around values: 0 ++ = 1, 1 ++ = 2, 2 ++ = 3, 3 ++ = 0.
-
+</details>
 3. How are addresses in memory specified and how does word size impact it?
-
+<details>
    Answer: Addresses specify byte locations in memory, and the word size impacts addressing by defining the byte interval between addressable units (e.g., 4 for 32-bit, 8 for 64-bit).
-
+</details>
 4. What is the significance of type specifiers and qualifiers in C, providing two examples for each?
-
+<details>
    Answer: Type specifiers like "long" and "unsigned" alter the storage size and representation of data types. Qualifiers, like "volatile" and "const", convey additional information about the variable's behavior or usage restrictions.
-
+</details>
 5. How does ASCII code facilitate arithmetic on character data types, providing a specific example?
-
+<details>
    Answer: ASCII assigns numerical values to characters, enabling arithmetic, like 'A'+1 resulting in 'B', due to ASCII values of 'A' and 'B' being 65 and 66, respectively.
-
+</details>
 6. Describe how data types in C can be flexibly used with an example provided in the notes.
-
+<details>
    Answer: In C, data types’ memory allocation, like for an "int", can be used flexibly, such as treating it as an array of 4 characters or an array of 2 16-byte values, despite its original integer type.
-
+</details>
 7. Explain with examples, what are base and composite data types in C?
 
    Answer: Base data types like "int" or "char" define basic kinds of data. Composite types, like arrays and structs, are formed using base or other composite types, e.g., an array of ints or a struct containing ints and chars.
