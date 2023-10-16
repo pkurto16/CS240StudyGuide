@@ -8,7 +8,7 @@
 
 2. **Library Includes in C**
 
-   - `#include &lt;stdio.h>` and `#include &lt;string.h>`: Essential for including functionalities related to standard input/output and string operations respectively.
+   - `#include <stdio.h>` and `#include <string.h>`: Essential for including functionalities related to standard input/output and string operations respectively.
 
    - Functions like `getchar()` and `printf()` are derived from these includes.
 
