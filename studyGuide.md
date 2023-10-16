@@ -412,21 +412,21 @@ In C, stack memory issues, particularly involving pointers, can lead to erroneou
    Answer: In C, data types’ memory allocation, like for an "int", can be used flexibly, such as treating it as an array of 4 characters or an array of 2 16-byte values, despite its original integer type.
 </details>
 7. Explain with examples, what are base and composite data types in C?
-
+<details>
    Answer: Base data types like "int" or "char" define basic kinds of data. Composite types, like arrays and structs, are formed using base or other composite types, e.g., an array of ints or a struct containing ints and chars.
-
+</details>
 8. Describe a scenario where understanding data types and their conversions are crucial to prevent bugs in a C program.
-
+<answer>
    Answer: Ensuring data consistency across platforms, where data type sizes might vary, and implicit conversions, such as from a larger to a smaller type, may result in data truncation and thus unexpected results.
-
+</answer>
 9. What are the sizes and ranges of “signed short int” and “float” types in a 32-bit system?
-
+<details>
    Answer: "signed short int" has a size of 2 bytes and a range of -32768 to +32767. "float" has a size of 4 bytes and a range from 1×10⁻³⁷ to 1×10³⁷.
-
+</details>
 10. How does the declaration of variables work in C, and what are the consequences of not initializing local variables?
-
+<details>
     Answer: Declarations in C allocate storage, and optionally initialize variables (e.g., int lower = 3;). Without explicit initialization, local variables may contain random values, while static and extern variables are zero-initialized.
-
+</details>
 
 # Summary of Lecture 4:
 
