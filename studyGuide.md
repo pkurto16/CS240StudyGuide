@@ -90,7 +90,7 @@
 
   - Explicit memory management is pivotal to avoid errors related to stack, heap, and pointers, ensuring variables are not accessing "garbage" memory post-function return.
 
-**10 Hard Quiz Questions**
+**Quiz Questions**
 
 1. **Code Understanding**: Explain the function and process of the initial C code snippet provided, especially focusing on how it uses pointers and character arrays.
 <details>
