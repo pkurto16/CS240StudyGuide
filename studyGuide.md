@@ -1515,7 +1515,7 @@ On a 64-bit machine where the word size is 8 bytes, if a struct contains an int 
 **A8:** 
 <details>
 
-12 bytes: 4 bytes for the int, 1 byte for the char, and 7 bytes of padding to align the structure size to a multiple of 8 bytes.
+int (4 bytes) + char (1 byte) + padding (3 bytes) = 8 bytes.
 </details>
 
 #### Q9: Safety and Type Checking
