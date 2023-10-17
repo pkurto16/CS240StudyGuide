@@ -1449,12 +1449,13 @@ In the expression `*s->t++`, what does the `++` operator increment?
 
 #### Q2: Passing Structures to Functions
 
-<details>
+
 
 In the first example provided in the slides (Slide 3), why does `f.a` remain 100 even after the function `doIt(f)` is called?
-</details>
+<details>
 
 **A2:** The structure `f` is passed by value, so the function modifies a copy of `f` and not `f` itself.
+</details>
 
 #### Q3: Memory Layout and Padding
 
