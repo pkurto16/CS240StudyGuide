@@ -278,6 +278,7 @@
 
 <details>
     - Answer: By passing a `sort_descending` comparator function.
+
 </details>
 
 
@@ -295,9 +296,9 @@
 
 17. **What is the signature of a comparator function in generic bubble sort?**
 
-</details>
-    - Answer: `int (*cmp_fn)(void*, void*)`.
 <details>
+    - Answer: `int (*cmp_fn)(void*, void*)`.
+</details>
 
 18. **How does the generic comparator handle different data types?**
 
@@ -316,3 +317,116 @@
 <details>
     - Answer: Creating a comparison function signature that works with any data type.
 </details>
+
+### Summary of Lecture 17: Callbacks and Asynchronous Programming in C
+
+- **Function Pointers as Callbacks**:
+  - Serve multiple roles when used as function arguments.
+  - Encapsulate computation provided by the caller.
+  - Form a simple object-oriented abstraction.
+  - Enable callee to conditionally update caller’s state.
+
+- **Callback Types**:
+  - **Synchronous Callbacks**: Complete their computation before returning. Examples include comparator in bubble sort, and function pointers in `fold` or `map`.
+  - **Asynchronous Callbacks**: Return to the caller before completing their computation, running tasks concurrently in the background. Examples include network I/O and packet filtering.
+
+- **Context of Callbacks in C**:
+  - C, primarily a sequential language, interfaces closely with operating system services which often execute concurrently.
+  - Callbacks interact with services like devices, network controllers, and GUIs.
+
+- **Asynchronous I/O Example**:
+  - Traditional I/O operations are synchronous, returning only after completion.
+  - Asynchronous I/O allows operations to return immediately while continuing work in the background.
+  - Callbacks manage asynchronous I/O actions effectively.
+
+- **DNS Lookup Example**:
+  - Traditional DNS lookup (synchronous): Client requests an IP address, waits for the response.
+  - Asynchronous DNS lookup using callbacks: Client registers callbacks for receiving and sending data, allowing for non-blocking operation.
+
+- **Generalizing Callbacks**:
+  - Limited interactions with the external environment in C.
+  - Signal interface in C: signal name, handler associated with the signal, and a mechanism to raise the signal.
+
+### Quiz Questions and Answers
+
+1. **What role do function pointers play when used as arguments to functions?**
+   - Answer: They encapsulate computation provided by the caller and serve as a simple form of object-oriented abstraction.
+   <details><summary>Answer</summary>Function pointers encapsulate caller-provided computation and offer a simple object-oriented abstraction.</details>
+
+2. **What is a synchronous callback?**
+   - Answer: A callback that completes its computation before returning to the caller.
+   <details><summary>Answer</summary>Synchronous callbacks complete their computation before returning.</details>
+
+3. **Give an example of an asynchronous callback in C.**
+   - Answer: A network I/O operation where a callback filters packets sent over a network and processes them in the background.
+   <details><summary>Answer</summary>Example: Network I/O operation where a callback filters and processes packets in the background.</details>
+
+4. **How do callbacks enable C to interact with operating system services?**
+   - Answer: Callbacks allow C applications to interface with concurrent OS services like devices and network controllers.
+   <details><summary>Answer</summary>Callbacks enable interaction with concurrent operating system services like devices and network controllers.</details>
+
+5. **What is the behavior of traditional synchronous I/O operations?**
+   - Answer: They do not return to the caller until they have fully completed their operation.
+   <details><summary>Answer</summary>Traditional synchronous I/O operations don't return until fully completed.</details>
+
+6. **How does asynchronous I/O differ from traditional I/O in terms of operation flow?**
+   - Answer: It allows operations to return back to the caller immediately while continuing to work in the background.
+   <details><summary>Answer</summary>Asynchronous I/O returns immediately to the caller and continues work in the background.</details>
+
+7. **Describe how callbacks are used in asynchronous DNS lookups.**
+   - Answer: Callbacks are registered for sending and receiving data, allowing the client to proceed without waiting for responses.
+   <details><summary>Answer</summary>Callbacks in asynchronous DNS lookups allow non-blocking operation by handling send/receive operations separately.</details>
+
+8. **What is the significance of the signaling mechanism in C?**
+   - Answer: It allows limited interaction with external environments through signals, handlers, and a mechanism to raise signals.
+   <details><summary>Answer</summary>The signaling mechanism in C enables limited interaction with external environments using signals and handlers.</details>
+
+9. **How does a callback update the caller's state conditionally?**
+   - Answer: Via the behavior of the supplied function, it can modify the state based on specific conditions or events.
+   <details><summary>Answer</summary>A callback updates the caller's state based on specific conditions or events through the supplied function's behavior.</details>
+
+10. **What is the difference between pure sequential and implicitly concurrent operations in the context of callbacks?**
+    - Answer: Pure sequential operations (synchronous callbacks) complete in order, while implicitly concurrent operations (asynchronous callbacks) may execute simultaneously.
+    <details><summary>Answer</summary>Pure sequential operations complete in order, while implicitly concurrent operations execute simultaneously.</details>
+
+11. **In what way does C's design facilitate callback use?**
+    - Answer: C's sequential nature with concurrency extensions allows for effective use
+
+ of callbacks, especially with operating system services.
+    <details><summary>Answer</summary>C's sequential nature with concurrency extensions facilitates effective use of callbacks.</details>
+
+12. **How do synchronous I/O operations differ from asynchronous I/O in terms of program execution?**
+    - Answer: Synchronous I/O operations block program execution until completion, whereas asynchronous I/O allows continuation of program execution alongside I/O operations.
+    <details><summary>Answer</summary>Synchronous I/O blocks program execution until completion, while asynchronous I/O allows parallel program execution.</details>
+
+13. **Explain the concept of a signal interface in C.**
+    - Answer: It comprises the signal name, the handler associated with the signal, and a mechanism to invoke the handler.
+    <details><summary>Answer</summary>The signal interface in C includes the signal name, its associated handler, and a mechanism to invoke the handler.</details>
+
+14. **What problem does asynchronous I/O solve compared to synchronous I/O?**
+    - Answer: It solves the problem of blocking program execution, allowing other tasks to proceed while I/O operations are ongoing.
+    <details><summary>Answer</summary>Asynchronous I/O solves the blocking issue of program execution, allowing multitasking during I/O operations.</details>
+
+15. **How does the use of callbacks in C relate to object-oriented programming?**
+    - Answer: Callbacks in C provide a form of object-oriented abstraction by encapsulating functions and operations.
+    <details><summary>Answer</summary>Callbacks offer a form of object-oriented abstraction by encapsulating specific functions and operations.</details>
+
+16. **Describe how callbacks can be used to manage asynchronous I/O actions effectively.**
+    - Answer: Callbacks can control and manage asynchronous I/O by handling specific tasks like data sending and receiving independently.
+    <details><summary>Answer</summary>Callbacks effectively manage asynchronous I/O by independently handling tasks like data sending and receiving.</details>
+
+17. **In the DNS lookup example, what is the role of the `ResponseHandler` callback?**
+    - Answer: It processes the response received from the DNS server asynchronously.
+    <details><summary>Answer</summary>The `ResponseHandler` callback processes the DNS server's response asynchronously.</details>
+
+18. **What is the benefit of using callbacks in network I/O operations?**
+    - Answer: They allow the program to continue functioning while network operations like packet filtering are processed in the background.
+    <details><summary>Answer</summary>Callbacks in network I/O allow the program to continue running while processing network operations in the background.</details>
+
+19. **How does the use of callbacks in C enhance interaction with external environments?**
+    - Answer: Callbacks enhance interaction by providing a way to handle asynchronous events and processes, especially in communication with operating system services.
+    <details><summary>Answer</summary>Callbacks enhance interaction with external environments by enabling asynchronous event and process handling.</details>
+
+20. **What are the key differences between the callback mechanisms in synchronous and asynchronous operations?**
+    - Answer: In synchronous operations, callbacks complete before returning control, while in asynchronous operations, callbacks allow the main program to continue while processing concurrently.
+    <details><summary>Answer</summary>Synchronous callbacks complete before returning control; asynchronous callbacks allow concurrent processing with the main program.</details>
