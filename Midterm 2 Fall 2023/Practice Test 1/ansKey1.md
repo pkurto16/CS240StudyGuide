@@ -11,13 +11,17 @@
 - `compare_asc`
 
 #### 4. Data Structures: Generic Implementation
-- No additional blanks needed.
+- `new_node->data`
+- `new_node->next`
+- `node->data`
+- `node->next`
 
 #### 5. Generics: Implementation Challenge
 - D. Correct as is.
 
 #### 6. Signal Handling: Basic
-- No additional blanks needed.
+- `exit(0);`
+- `sleep(1);`
 
 #### 7. Undefined Behavior: Identification
 - E. Using uninitialized variables.
@@ -35,7 +39,16 @@
 - D. Correct as is.
 
 #### 11. Stack Implementation: Generic
-- No additional blanks needed.
+- **Fill in the Blanks:**
+  - `capacity * sizeof(void*)`
+  - `top`
+  - `top`
+  - `top`
+  - `stack->items`
 
 #### 12. Challenge Question: Combining Concepts
-- Use of function pointers within the `apply` function is the key concept here, with no specific correct answer from the provided options, as it depends on the implementation details.
+- **Fill in the Blanks:** 
+  - `head->data`
+  - `head->next`
+- **Multiple Choice:** 
+  - B. Segmentation Fault

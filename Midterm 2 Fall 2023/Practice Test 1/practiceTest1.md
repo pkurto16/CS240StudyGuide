@@ -1,8 +1,7 @@
-1. Function Pointers: Basic Syntax
+# 1. Function Pointers: Basic Syntax
 Fill in the Blanks:
 
 ```c
-/* Define and use a function pointer. */
 #include <stdio.h>
 
 int add(int a, int b) { return a + b; }
@@ -23,11 +22,10 @@ int main() {
     return 0;
 }
 ```
-2. Function Pointers: Abstraction
+# 2. Function Pointers: Abstraction
 Multiple Choice:
 
 ```c
-/* Complex implementation of a 'map' function using function pointers. */
 #include <stdio.h>
 
 void map(int* array, int size, int (*func)(int)) {
@@ -55,11 +53,10 @@ C. increment should return void.
 D. Replace func(array[i]) with *func(array + i).
 E. Loop in map should use <= instead of <.
 
-3. Function Pointers: Comparators
+# 3. Function Pointers: Comparators
 Fill in the Blanks:
 
 ```c
-/* Complex sort function with a comparator function pointer. */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -81,13 +78,15 @@ int main() {
     return 0;
 }
 ```
-4. Data Structures: Generic Implementation
-Fill in the Blanks:
+Certainly! Let's update questions 4 and 6 to include specific blanks that need to be filled in, adding more depth and complexity to the test.
+
+# 4. Data Structures: Generic Implementation
+**Fill in the Blanks:**
 
 ```c
-/* Complex linked list implementation with generic data. */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct node {
     void* data;
@@ -96,18 +95,19 @@ typedef struct node {
 
 void add_node(node_t** head, void* new_data, size_t data_size) {
     node_t* new_node = (node_t*)malloc(sizeof(node_t));
-    new_node->data = malloc(data_size);
+    new_node->____ = malloc(data_size); // Fill in the blank for new_node attribute
     memcpy(new_node->data, new_data, data_size);
 
-    new_node->next = *head;
+    new_node->____ = *head; // Fill in the blank for new_node attribute
     *head = new_node;
 }
 
 void print_int_nodes(node_t* node) {
     while (node != NULL) {
-        printf(" %d", *(int*)(node->data));
-        node = node->next;
+        printf(" %d", *(int*)(node->____)); // Fill in the blank for node attribute
+        node = node->____; // Fill in the blank for node attribute
     }
+    printf("\n");
 }
 
 int main() {
@@ -122,11 +122,12 @@ int main() {
     return 0;
 }
 ```
-5. Generics: Implementation Challenge
+
+# 5. Generics: Implementation Challenge
 Multiple Choice:
 
 ```c
-/* Complex function to reverse an array using generics. */
+/* Function to reverse an array using generics. */
 #include <stdio.h>
 #include <string.h>
 
@@ -156,16 +157,18 @@ C. element_size should be a pointer.
 D. Correct as is.
 E. Replace char temp[element_size]; with void* temp;.
 
-6. Signal Handling: Basic
-Fill in the Blanks:
+# 6. Signal Handling: Basic
+**Fill in the Blanks:**
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
+#include <unistd.h>
 
 void sigint_handler(int sig) {
     printf("Caught SIGINT (%d)\n", sig);
-    exit(0);
+    ____; // Fill in the blank for the exit function
 }
 
 int main() {
@@ -176,12 +179,13 @@ int main() {
 
     while (1) {
         printf("Running...\n");
-        sleep(1);
+        ____; // Fill in the blank for the sleep function
     }
     return 0;
 }
 ```
-7. Undefined Behavior: Identification
+
+# 7. Undefined Behavior: Identification
 Multiple Choice:
 
 ```c
@@ -200,7 +204,7 @@ C. No undefined behavior.
 D. Incorrect function signature.
 E. Using uninitialized variables.
 
-8. Optimizations: Techniques
+# 8. Optimizations: Techniques
 Multiple Choice:
 Identify the optimization technique used in this code snippet:
 
@@ -216,18 +220,18 @@ int sum(int* array, int size) {
     return total;
 }
 ```
-Options:
-A. Loop unrolling.
-B. Function inlining.
-C. Lazy evaluation.
-D. Recursion.
-E. Parallel processing.
+Options:\\
+A. Loop unrolling.\\
+B. Function inlining.\\
+C. Lazy evaluation.\\
+D. Recursion.\\
+E. Parallel processing.\\
 
-9. Strings, Arrays, Stack Management: Operations
+# 9. Strings, Arrays, Stack Management: Operations
 Fill in the Blanks:
 
 ```c
-/* Complex string concatenation and comparison functions. */
+/* String concatenation and comparison functions. */
 #include <stdio.h>
 
 void concatenate(char* dest, const char* src) {
@@ -256,11 +260,11 @@ int main() {
     return 0;
 }
 ```
-10. Linked-List: Operations
+# 10. Linked-List: Operations
 Multiple Choice:
 
 ```c
-/* Complex function to insert a new node in a linked list. */
+/* Function to insert a new node in a linked list. */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -292,20 +296,21 @@ int main() {
     return 0;
 }
 ```
-Options:
-A. insert should return node_t*.
-B. malloc should be replaced with calloc.
-C. The list should be doubly linked.
-D. Correct as is.
-E. data should be a pointer to void.
+Options:\\
+A. insert should return node_t*.\\
+B. malloc should be replaced with calloc.\\
+C. The list should be doubly linked.\\
+D. Correct as is.\\
+E. data should be a pointer to void.\\
 
-I will now create questions 11 and 12 based on your guidelines, ensuring they are complex with an average of 10-20 lines of code, and include the necessary blanks. Then, I will provide an answer key for all the questions.
 
-### 11. Stack Implementation: Generic
+Let's revise question 11 to include specific blanks that need to be filled in, enhancing the complexity and testing depth.
+
+# 11. Stack Implementation: Generic
 **Fill in the Blanks:**
 
 ```c
-/* Complex generic stack implementation. */
+/* Generic stack implementation with fill-in-the-blank sections. */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -316,22 +321,30 @@ typedef struct {
 } stack_t;
 
 void init_stack(stack_t* stack, int capacity) {
-    stack->items = (void**)malloc(capacity * sizeof(void*));
+    stack->items = (void**)malloc(______); // Fill in the blank for the multiplication factor
     stack->top = -1;
     stack->capacity = capacity;
 }
 
 void push(stack_t* stack, void* item) {
-    if (stack->top < stack->capacity - 1) {
-        stack->items[++stack->top] = item;
+    if (stack->top < stack->______ - 1) { // Fill in the blank for the stack attribute
+        stack->items[++stack->______] = item; // Fill in the blank for the stack attribute
     }
 }
 
 void* pop(stack_t* stack) {
-    if (stack->top >= 0) {
+    if (stack->______ >= 0) { // Fill in the blank for the stack attribute
         return stack->items[stack->top--];
     }
     return NULL;
+}
+
+void free_stack(stack_t* stack) {
+    // Fill in the blanks for proper memory deallocation
+    for (int i = 0; i <= stack->______; i++) {
+        free(stack->items[i]);
+    }
+    free(______);
 }
 
 int main() {
@@ -346,15 +359,16 @@ int main() {
     while ((item = (int*)pop(&stack)) != NULL) {
         printf("%d\n", *item);
     }
+
+    free_stack(&stack);
     return 0;
 }
 ```
-
+-----
 ### 12. Challenge Question: Combining Concepts
-**Fill in the Blanks & Multiple Choice:**
+**Fill in the Blanks:**
 
 ```c
-/* Complex use of function pointers in a generic data structure. */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -365,10 +379,30 @@ typedef struct node {
     struct node* next;
 } node_t;
 
+node_t* create_node(void* data) {
+    node_t* new_node = (node_t*)malloc(sizeof(node_t));
+    new_node->data = data;
+    new_node->next = NULL;
+    return new_node;
+}
+
+void append(node_t** head, void* data) {
+    node_t* new_node = create_node(data);
+    if (*head == NULL) {
+        *head = new_node;
+    } else {
+        node_t* current = *head;
+        while (current->next != NULL) {
+            current = current->next;
+        }
+        current->next = new_node;
+    }
+}
+
 void apply(node_t* head, operation_t op) {
     while (head) {
-        op(head->data);
-        head = head->next;
+        op(head->_____);
+        head = head->_____;
     }
 }
 
@@ -377,15 +411,33 @@ void increment(void* data) {
     (*p)++;
 }
 
+void print_list(node_t* head) {
+    while (head != NULL) {
+        printf("%d ", *(int*)(head->data));
+        head = head->next;
+    }
+    printf("\n");
+}
+
 int main() {
     node_t* head = NULL;
-    // Assume functions to manipulate linked list are defined
-    // ...
+    int values[] = {1, 2, 3, 4, 5, 0};
+    for (int i = 0; i < 6; i++) {
+        append(&head, (i < 5) ? &values[i] : NULL);
+    }
 
     apply(head, increment);
-    // Assume function to print list is defined
-    // ...
+    print_list(head);
+
     return 0;
 }
 ```
 
+**Multiple Choice Question:**
+What is the output of `print_list(head);` after the `apply` function is called?
+
+A. `2 3 4 5 6`
+B. Segmentation Fault
+C. `1 2 3 4 5`
+D. `2 3 4 5 0`
+E. `2 3 4 5 1`
