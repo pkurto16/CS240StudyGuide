@@ -22,6 +22,8 @@ int main() {
     return 0;
 }
 ```
+
+-----
 # 2. Function Pointers: Abstraction
 Multiple Choice:
 
@@ -46,13 +48,14 @@ int main() {
     return 0;
 }
 ```
-Options:
-A. Correct as is.
-B. map function should take int** array.
-C. increment should return void.
-D. Replace func(array[i]) with *func(array + i).
-E. Loop in map should use <= instead of <.
+Options:\
+A. Correct as is.\
+B. map function should take `int** array`.\
+C. increment should return void.\
+D. Replace `func(array[i])` with `*func(array + i)`.\
+E. Loop in map should use `<=` instead of `<`.\
 
+-----
 # 3. Function Pointers: Comparators
 Fill in the Blanks:
 
@@ -78,8 +81,8 @@ int main() {
     return 0;
 }
 ```
-Certainly! Let's update questions 4 and 6 to include specific blanks that need to be filled in, adding more depth and complexity to the test.
 
+-----
 # 4. Data Structures: Generic Implementation
 **Fill in the Blanks:**
 
@@ -123,6 +126,7 @@ int main() {
 }
 ```
 
+-----
 # 5. Generics: Implementation Challenge
 Multiple Choice:
 
@@ -150,13 +154,14 @@ int main() {
     return 0;
 }
 ```
-Options:
-A. memcpy should be replaced with direct assignments.
-B. The loop condition should be i < size.
-C. element_size should be a pointer.
-D. Correct as is.
-E. Replace char temp[element_size]; with void* temp;.
+Options:\
+A. memcpy should be replaced with direct assignments.\
+B. The loop condition should be `i < size`.\
+C. element_size should be a pointer.\
+D. Correct as is.\
+E. Replace `char temp[element_size];` with `void* temp;`.\
 
+-----
 # 6. Signal Handling: Basic
 **Fill in the Blanks:**
 
@@ -184,7 +189,7 @@ int main() {
     return 0;
 }
 ```
-
+-----
 # 7. Undefined Behavior: Identification
 Multiple Choice:
 
@@ -197,13 +202,14 @@ int func(int x) {
     return array[x];
 }
 ```
-Options:
-A. Accessing an array out of bounds.
-B. Returning a local variable.
-C. No undefined behavior.
-D. Incorrect function signature.
-E. Using uninitialized variables.
+Options:\
+A. Accessing an array out of bounds.\
+B. Returning a local variable.\
+C. No undefined behavior.\
+D. Incorrect function signature.\
+E. Using uninitialized variables.\
 
+-----
 # 8. Optimizations: Techniques
 Multiple Choice:
 Identify the optimization technique used in this code snippet:
@@ -220,13 +226,14 @@ int sum(int* array, int size) {
     return total;
 }
 ```
-Options:\\
-A. Loop unrolling.\\
-B. Function inlining.\\
-C. Lazy evaluation.\\
-D. Recursion.\\
-E. Parallel processing.\\
+Options:\
+A. Loop unrolling.\
+B. Function inlining.\
+C. Lazy evaluation.\
+D. Recursion.\
+E. Parallel processing.\
 
+-----
 # 9. Strings, Arrays, Stack Management: Operations
 Fill in the Blanks:
 
@@ -260,6 +267,8 @@ int main() {
     return 0;
 }
 ```
+
+-----
 # 10. Linked-List: Operations
 Multiple Choice:
 
@@ -296,16 +305,14 @@ int main() {
     return 0;
 }
 ```
-Options:\\
-A. insert should return node_t*.\\
-B. malloc should be replaced with calloc.\\
-C. The list should be doubly linked.\\
-D. Correct as is.\\
-E. data should be a pointer to void.\\
+Options:\
+A. insert should return `node_t*`.\
+B. malloc should be replaced with calloc.\
+C. The list should be doubly linked.\
+D. Correct as is.\
+E. data should be a pointer to void.\
 
-
-Let's revise question 11 to include specific blanks that need to be filled in, enhancing the complexity and testing depth.
-
+-----
 # 11. Stack Implementation: Generic
 **Fill in the Blanks:**
 
@@ -364,6 +371,7 @@ int main() {
     return 0;
 }
 ```
+
 -----
 ### 12. Challenge Question: Combining Concepts
 **Fill in the Blanks:**
@@ -434,10 +442,9 @@ int main() {
 ```
 
 **Multiple Choice Question:**
-What is the output of `print_list(head);` after the `apply` function is called?
-
-A. `2 3 4 5 6`
-B. Segmentation Fault
-C. `1 2 3 4 5`
-D. `2 3 4 5 0`
-E. `2 3 4 5 1`
+What is the output of `print_list(head);` after the `apply` function is called?\
+A. `2 3 4 5 6`\
+B. Segmentation Fault\
+C. `1 2 3 4 5`\
+D. `2 3 4 5 0`\
+E. `2 3 4 5 1`\
