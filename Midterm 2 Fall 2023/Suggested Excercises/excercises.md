@@ -82,9 +82,7 @@
     - **Difficulty Level:** 3
     - **Topics Covered:** Signal Handling
 
-22. **Exercise:** Write a program that has examples of
-
- implementation-dependent, unspecified, and undefined behavior.
+22. **Exercise:** Write a program that has examples of implementation-dependent, unspecified, and undefined behavior.
      - **Difficulty Level:** 2
      - **Topics Covered:** Programming Concepts, C Language Specifics
 
