@@ -428,3 +428,106 @@
 20. **What are the key differences between the callback mechanisms in synchronous and asynchronous operations?**
 
     <details><summary>Answer</summary>Synchronous callbacks complete before returning control; asynchronous callbacks allow concurrent processing with the main program.</details>
+
+### Summary of Lecture 18: Signals in C - Synchronous vs Asynchronous Actions
+
+- **Synchronous vs Asynchronous Actions**:
+  - **Synchronous Action**: Similar to a procedure call, where the caller waits for the callee to return a result, e.g., a phone call.
+  - **Asynchronous Action**: A response from the environment that does not require the caller to wait for a response, e.g., typing Ctrl+C during program execution.
+
+- **Dealing with Asynchronous Actions**:
+  - **Polling**: Asking the kernel or OS if a specific event has occurred since the last check.
+  - **Handling**: Informing the OS to perform a specific action when an event occurs, using signals.
+
+- **Kinds of Signals**:
+  - **Interrupts**: Triggered by the environment, e.g., SIGINT (Ctrl-C).
+  - **Hardware Signals**: Generated due to hardware exceptions, e.g., SIGSEGV for invalid memory references.
+  - **Software Signals**: Arise from software events, e.g., SIGPIPE for a broken pipe.
+
+- **Handling Signals**:
+  - **Ignoring**: Not always possible, especially for hardware exceptions.
+  - **Catching**: Setting up a signal handler to execute when a signal occurs.
+  - **Default Actions**: Most signals, by default, terminate the process.
+
+- **Generating Signals**:
+  - `kill(pid_t pid, int sig)`: Sends a specified signal to a process.
+  - `raise(sig)`: Generates a signal to be handled by the program that invoked the call.
+
+- **Common Signals**:
+  - SIGABRT, SIGFPE, SIGILL, SIGINT, SIGSEGV, SIGTERM, SIGUSR, etc., each with specific use cases.
+
+- **Defining Signal Handlers**:
+  - Handlers are defined using the `signal` function, which associates a signal with a handler function.
+
+- **Examples of Signal Usage**:
+  - Calculating factorials and handling errors using SIGUSR1.
+  - Using signals and handlers to manage a clock structure and update it every second with SIGALRM.
+
+- **Practical Considerations**:
+  - Signal semantics and implementation can be complex and poorly defined.
+  - Libraries like `sigaction.h` provide cleaner semantics and portability.
+  - Handlers must be designed carefully to avoid faults.
+
+### Quiz Questions and Answers
+
+1. **What is an example of a synchronous action in computing?**
+   <details><summary>Answer</summary>A procedure call where the caller waits for the callee to return a result.</details>
+
+2. **Describe an asynchronous action in the context of operating systems.**
+   <details><summary>Answer</summary>A response from the environment, such as a user typing Ctrl-C during a program's execution.</details>
+
+3. **What are two methods for dealing with asynchronous actions?**
+   <details><summary>Answer</summary>Polling the kernel or OS, and handling by setting up actions to occur when an event happens.</details>
+
+4. **Name a signal triggered by environmental factors in C.**
+   <details><summary>Answer</summary>SIGINT, triggered by Ctrl-C.</details>
+
+5. **What kind of signal is SIGSEGV and what causes it?**
+   <details><summary>Answer</summary>A hardware signal caused by an invalid memory reference.</details>
+
+6. **How can a signal be handled in a C program?**
+   <details><summary>Answer</summary>By setting up a signal handler function to catch and respond to the signal.</details>
+
+7. **What does the `kill` function do in the context of signals?**
+   <details><summary>Answer</summary>It sends a specified signal to a given process.</details>
+
+8. **What is the default action of most signals in C?**
+   <details><summary>Answer</summary>Most signals, by default, terminate the process.</details>
+
+9. **How do you associate a signal with a handler function in C?**
+   <details><summary>Answer</summary>Using the `signal` function, which takes the signal and the handler function as arguments.</details>
+
+10. **What does the SIGUSR1 signal typically indicate in a program?**
+    <details><summary>Answer</summary>It is a user-defined signal, often used for custom error handling or specific program actions.</details>
+
+11. **What is the role of the `signal_handler` function in the clock example?**
+    <details><summary>Answer</summary>It calls the callback function to update the clock every time the SIGALRM signal is received.</details>
+
+12. **How can asynchronous actions occur in an operating system?**
+    <details><summary>Answer</summary>Through background actions, parallel execution, and reactive events like mouse clicks or keyboard inputs.</details>
+
+13. **What is a potential issue with handling multiple signals in C?**
+    <details><summary>Answer
+
+</summary>It may be unclear how to handle situations where multiple signals are triggered simultaneously.</details>
+
+14. **Why might you use `sigaction.h` over traditional signal handling in C?**
+    <details><summary>Answer</summary>For cleaner semantics, better portability, and more controlled handling of signals.</details>
+
+15. **What precautions should be taken when writing signal handlers?**
+    <details><summary>Answer</summary>Handlers should be designed carefully to avoid faults, considering the behaviors they are meant to handle.</details>
+
+16. **What happens when the `raise(sig)` function is called in a C program?**
+    <details><summary>Answer</summary>It generates a signal that is handled by the program containing the call to `raise`.</details>
+
+17. **Describe the process of setting an alarm using signals in C.**
+    <details><summary>Answer</summary>Setting an alarm involves associating a SIGALRM signal with a handler function that performs an action when the alarm signal is received.</details>
+
+18. **What is the significance of the `setitimer` function in signal-based programming?**
+    <details><summary>Answer</summary>`setitimer` sets an interval timer that counts down and signals an alarm, triggering a handler function.</details>
+
+19. **How does a C program differentiate between different types of signals?**
+    <details><summary>Answer</summary>Each signal has a unique identifier (like SIGINT, SIGSEGV), and the program sets up handlers for each type as needed.</details>
+
+20. **What is the difference between SIGABRT and SIGTERM?**
+    <details><summary>Answer</summary>SIGABRT indicates an abnormal termination often instigated by the `abort` function, while SIGTERM is a request to terminate the program.</details>
