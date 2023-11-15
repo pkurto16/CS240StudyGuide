@@ -111,14 +111,54 @@ View Excercise 5 Solution:
 
 ### Exercise 5: Implement Map Using Fold
 ```c
-// Assuming fold is defined similarly to Exercise 2
-void** map(void* (*func)(void*), void** array, int size, int elemSize) {
-    void** result = malloc(size * sizeof(void*));
-    for (int i = 0; i < size; i++) {
-        result[i] = func(array[i]);
-    }
-    return result;
+
+#include<stdio.h>
+typedef struct node {
+    int data;
+    struct node * next;
+} node;
+int multByConst(int a, int constant){
+    return a*constant;
 }
+int addToConst(int a, int constant){
+    return a+constant;
+}
+void fold(node * current, int constant, int (*map)(int,int)){
+    if(current== NULL) {
+        return;
+    }
+    current->data = map(current->data, constant);
+    fold(current->next, constant, map);
+}
+int main(void) {
+    node n1 = {2, NULL};
+    node n2 = {3, NULL};
+    node n3 = {4, NULL};
+    n1.next = &n2;
+    n2.next = &n3;
+    node * temp = &n1;
+    for(int i = 0; i<3; i++){
+        printf("Node: %d ",temp->data);
+        temp=temp->next;
+    }
+    printf("\n");
+    fold(&n1, 4, addToConst);
+    temp = &n1;
+    for(int i = 0; i<3; i++){
+        printf("Node: %d ",temp->data);
+        temp=temp->next;
+    }
+    printf("\n");
+    fold(&n1, 7, multByConst);
+    temp = &n1;
+    for(int i = 0; i<3; i++){
+        printf("Node: %d ",temp->data);
+        temp=temp->next;
+    }
+    printf("\n");
+    return 0;
+}
+
 ```
 
 </details>
