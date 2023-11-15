@@ -176,6 +176,65 @@ void lsearchAndAdd(int* array, int size, int element, int (*predicate)(int)) {
     array[size] = element; // Assuming there is space for the new element
 }
 ```
+I also implemented my own interpretation of this question in the form of a filter:
+```c
+
+#include<stdio.h>
+int is_even(int i){
+    return i%2==0 ? 1:0;
+}
+int is_odd(int i){
+    return i%2==0 ? 0:1;
+}
+/* You have to pass in an alloced thing */
+int filter(int * arr, int * filtered, int (*predicate)(int), int size, int acc, int count) {
+    if(acc==size){
+        return count;
+    }
+    if(predicate(*arr)){
+        *filtered = *arr;
+        count++;
+        filtered++;
+    }
+    arr++;
+    acc++;
+    return filter(arr,filtered,predicate,size,acc, count);
+}
+int main(void) {
+    int arr[100];
+    int filtered[100];
+    for(int i = 0; i<100; i++){
+        arr[i] = i;
+    }
+    printf("No Filter: \[");
+    for(int i = 0; i<100; i++) {
+        if(i!=0){
+            printf(",");
+        }
+        printf("%d",arr[i]);
+    }
+    printf("\]\n\n");
+    printf("Odd Filter: \[");
+    int num_left = filter(arr,filtered, is_odd, 100, 0, 0);
+    for(int i = 0; i<num_left; i++){
+        if(i!=0){
+            printf(",");
+        }
+        printf("%d",filtered[i]);
+    }
+    printf("\]\n\n");
+    printf("Even Filter: \[");
+    num_left = filter(arr,filtered, is_even, 100, 0, 0);
+    for(int i = 0; i<num_left; i++){
+        if(i!=0){
+            printf(",");
+        }
+        printf("%d",filtered[i]);
+    }
+    printf("\]\n\n");
+    return 0;
+}
+```
 
 </details>
 <details>
