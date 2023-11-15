@@ -5,7 +5,7 @@
 - `operation = subtract;`
 
 #### 2. Function Pointers: Abstraction
-- E. Loop in map should use `<=` instead of `<`.
+- A. Correct as is.
 
 #### 3. Function Pointers: Comparators
 - `compare_asc`
