@@ -7,21 +7,48 @@ View Excercise 1 Solution:
 </summary>
 
 ### Exercise 1: Smallest Date with Fold
-```c
-struct DateStruct {
-    int date; // Date represented as an integer
-};
 
-int minDate(int date1, int date2) {
-    return (date1 < date2) ? date1 : date2;
+Note: This would normally need to be folding a list, but it is simply extra syntax, so the same concept applies with a pointer used as an array.
+
+```c
+
+#include<stdio.h>
+#define LIST_LEN (20)
+
+struct event{
+        int date;
+        int id;
+};
+typedef struct event evnt;
+
+evnt min(evnt a, evnt b){
+    return (a.date < b.date ? a : b);
+}
+evnt max(evnt a, evnt b){
+    return (a.date > b.date ? a : b);
 }
 
-struct DateStruct foldMinDate(struct DateStruct* list, int size) {
-    struct DateStruct minStruct = list[0];
-    for (int i = 1; i < size; i++) {
-        minStruct.date = minDate(minStruct.date, list[i].date);
+evnt fold(evnt acc, int len, int acc2, evnt* list_events, evnt (*f)(evnt,evnt)){
+    if(acc2 >= len){
+        return acc;
     }
-    return minStruct;
+    acc = f(acc, *list_events);
+    list_events++;
+    acc2++;
+    return fold(acc,len, acc2, list_events, f);
+    
+}
+int main(void) {
+    evnt event_list[LIST_LEN];
+    for(int i = 0; i < LIST_LEN; i++) {
+        event_list[i].date = i;
+        event_list[i].id = 20-i;
+    }
+    evnt res = fold(event_list[0], LIST_LEN, 0, event_list, min);
+    printf("Min: Date %d, ID %d\n", res.date, res.id);
+    res = fold(event_list[0], LIST_LEN, 0, event_list, max);
+    printf("Max: Date %d, ID %d\n", res.date, res.id);
+    return 0;
 }
 ```
 
